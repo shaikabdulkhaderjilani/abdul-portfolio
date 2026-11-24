@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-apple-black: #000000;
+  --color-apple-card: #111113;
+  --color-apple-border: #27272A;
+  --color-apple-text: #F5F5F7;
+  --color-apple-muted: #86868B;
+  --color-apple-blue: #2997FF;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+}
+
+@layer base {
+  html {
+    background-color: #000000;
+    color: #F5F5F7;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: auto;
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: #000000;
+  }
+}
