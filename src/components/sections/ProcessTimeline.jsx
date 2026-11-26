@@ -52,20 +52,43 @@ const PACKAGES = [
     name: "High-Converting Landing / Portfolio",
     timeline: "4 – 6 Days",
     idealFor: "Founders, Creators & Local Businesses",
-    highlights: ["Custom Apple-style animations", "Mobile-first & SEO ready", "WhatsApp / Email lead capture"],
+    highlights: [
+      "Custom Apple-style animations",
+      "Mobile-first & SEO ready",
+      "WhatsApp / Email lead capture",
+    ],
   },
   {
     name: "Full-Stack Web App / E-Commerce",
     timeline: "10 – 18 Days",
     idealFor: "D2C Brands & Startups",
-    highlights: ["React + Node/MongoDB stack", "OTP Login, Cart & Order tracking", "Admin dashboard & payment/shipping APIs"],
+    highlights: [
+      "React + Node/MongoDB stack",
+      "OTP Login, Cart & Order tracking",
+      "Admin dashboard & payment/shipping APIs",
+    ],
     featured: true,
   },
   {
     name: "AI & Python Business Automation",
     timeline: "5 – 10 Days",
     idealFor: "Agencies & Sales Teams",
-    highlights: ["Automated lead scraping & outreach", "Gemini AI document/content workflows", "Custom Streamlit / Web control panel"],
+    highlights: [
+      "Automated lead scraping & outreach",
+      "Gemini AI document/content workflows",
+      "Custom Streamlit / Web control panel",
+    ],
+  },
+  {
+    name: "Content Management & Brand Growth",
+    timeline: "Monthly Retainer / Sprint",
+    idealFor: "Creators, Founders & D2C Brands",
+    highlights: [
+      "High-retention carousels & Reels editing",
+      "Comment-to-DM inbound lead capture funnels",
+      "Visual brand system & organic growth analytics",
+    ],
+    isContent: true,
   },
 ];
 
@@ -102,7 +125,8 @@ export default function ProcessTimeline() {
               How We Ship
             </p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-5xl">
-              Precision process. <span className="text-apple-muted">Zero guesswork.</span>
+              Precision process.{" "}
+              <span className="text-apple-muted">Zero guesswork.</span>
             </h2>
           </div>
           <p className="max-w-md text-sm text-apple-muted">
@@ -223,56 +247,77 @@ export default function ProcessTimeline() {
             <span>Engagement Models</span>
           </div>
 
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-            {PACKAGES.map((pkg) => (
-              <div
-                key={pkg.name}
-                className={`flex flex-col justify-between rounded-3xl border p-7 ${
-                  pkg.featured
-                    ? "border-apple-blue/50 bg-gradient-to-b from-apple-blue/10 to-apple-card"
-                    : "border-white/10 bg-apple-card"
-                }`}
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-xs font-medium text-apple-blue">
-                      {pkg.timeline}
-                    </span>
-                    {pkg.featured && (
-                      <span className="rounded-full bg-apple-blue/20 px-2.5 py-0.5 text-[10px] font-semibold text-apple-blue">
-                        Most Popular
-                      </span>
-                    )}
-                  </div>
-                  <h4 className="mt-3 text-xl font-semibold tracking-tight text-white">
-                    {pkg.name}
-                  </h4>
-                  <p className="mt-1 text-xs text-apple-muted">
-                    Best for: {pkg.idealFor}
-                  </p>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+            {PACKAGES.map((pkg) => {
+              const isContent = Boolean(pkg.isContent);
 
-                  <ul className="mt-5 space-y-2.5 border-t border-white/10 pt-5">
-                    {pkg.highlights.map((point) => (
-                      <li
-                        key={point}
-                        className="flex items-center gap-2 text-xs text-zinc-300"
-                      >
-                        <span className="h-1.5 w-1.5 rounded-full bg-apple-blue" />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <a
-                  href="#contact"
-                  className="mt-7 inline-flex items-center gap-1.5 text-xs font-medium text-apple-blue transition-opacity hover:opacity-80"
+              return (
+                <div
+                  key={pkg.name}
+                  className={`flex flex-col justify-between rounded-3xl border p-7 transition-colors ${
+                    pkg.featured
+                      ? "border-apple-blue/50 bg-gradient-to-b from-apple-blue/10 to-apple-card"
+                      : isContent
+                        ? "border-amber-400/35 bg-gradient-to-b from-amber-400/[0.07] to-apple-card hover:border-amber-400/50"
+                        : "border-white/10 bg-apple-card hover:border-white/20"
+                  }`}
                 >
-                  <span>Request a Quote</span>
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </a>
-              </div>
-            ))}
+                  <div>
+                    <div className="flex items-center justify-between gap-2">
+                      <span
+                        className={`text-xs font-medium ${
+                          isContent ? "text-amber-300" : "text-apple-blue"
+                        }`}
+                      >
+                        {pkg.timeline}
+                      </span>
+                      {pkg.featured && (
+                        <span className="rounded-full bg-apple-blue/20 px-2.5 py-0.5 text-[10px] font-semibold text-apple-blue">
+                          Most Popular
+                        </span>
+                      )}
+                      {isContent && (
+                        <span className="rounded-full border border-amber-400/35 bg-amber-400/10 px-2.5 py-0.5 text-[10px] font-semibold text-amber-300">
+                          ★ Content &amp; Growth
+                        </span>
+                      )}
+                    </div>
+                    <h4 className="mt-3 text-xl font-semibold tracking-tight text-white">
+                      {pkg.name}
+                    </h4>
+                    <p className="mt-1 text-xs text-apple-muted">
+                      Best for: {pkg.idealFor}
+                    </p>
+
+                    <ul className="mt-5 space-y-2.5 border-t border-white/10 pt-5">
+                      {pkg.highlights.map((point) => (
+                        <li
+                          key={point}
+                          className="flex items-center gap-2 text-xs text-zinc-300"
+                        >
+                          <span
+                            className={`h-1.5 w-1.5 shrink-0 rounded-full ${
+                              isContent ? "bg-amber-300" : "bg-apple-blue"
+                            }`}
+                          />
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <a
+                    href="#contact"
+                    className={`mt-7 inline-flex items-center gap-1.5 text-xs font-medium transition-opacity hover:opacity-80 ${
+                      isContent ? "text-amber-300" : "text-apple-blue"
+                    }`}
+                  >
+                    <span>Request a Quote</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </a>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

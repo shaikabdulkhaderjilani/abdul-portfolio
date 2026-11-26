@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Layout, Server, Cpu, Wrench } from "lucide-react";
+import { Layout, Server, Cpu, Wrench, Sparkles } from "lucide-react";
 
 const SKILL_GROUPS = [
   {
@@ -58,6 +58,21 @@ const SKILL_GROUPS = [
       "SEO & Performance",
     ],
   },
+  {
+    id: "content-brand",
+    title: "Content Management & Brand Systems",
+    subtitle: "Visual Storytelling, Conversion Copy & Lead Funnels",
+    icon: Sparkles,
+    featured: true,
+    items: [
+      "Canva & Visual Design",
+      "Figma System Design",
+      "High-Retention Carousels",
+      "Hook & Conversion Copy",
+      "Comment-to-DM Funnels",
+      "Content Strategy & Analytics",
+    ],
+  },
 ];
 
 export default function SkillsSection() {
@@ -75,19 +90,25 @@ export default function SkillsSection() {
           className="mb-14 max-w-2xl"
         >
           <p className="text-xs font-medium uppercase tracking-widest text-apple-blue">
-            Technical Stack
+            Technical &amp; Creative Stack
           </p>
           <h2 className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
             Skills
           </h2>
           <p className="mt-3 text-base text-apple-muted sm:text-lg">
-            Tools, languages, and frameworks I use to build and ship production web apps and automation systems.
+            Tools, languages, and frameworks I use to build and ship production web apps, automation systems, and{" "}
+            <span className="font-medium text-amber-300">
+              high-converting content systems
+            </span>
+            .
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {SKILL_GROUPS.map((group, idx) => {
             const Icon = group.icon;
+            const isFeatured = Boolean(group.featured);
+
             return (
               <motion.div
                 key={group.id}
@@ -99,25 +120,49 @@ export default function SkillsSection() {
                   delay: idx * 0.08,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="rounded-3xl border border-white/10 bg-apple-card p-7 transition-colors hover:border-white/20"
+                className={`rounded-3xl border p-7 transition-colors ${
+                  isFeatured
+                    ? "border-amber-400/30 bg-amber-400/[0.04] hover:border-amber-400/50 md:col-span-2"
+                    : "border-white/10 bg-apple-card hover:border-white/20"
+                }`}
               >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-apple-blue">
-                    <Icon className="h-5 w-5" />
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`flex h-10 w-10 items-center justify-center rounded-2xl border ${
+                        isFeatured
+                          ? "border-amber-400/30 bg-amber-400/10 text-amber-300"
+                          : "border-white/10 bg-white/5 text-apple-blue"
+                      }`}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold tracking-tight text-white">
+                        {group.title}
+                      </h3>
+                      <p className="text-xs text-apple-muted">
+                        {group.subtitle}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-semibold tracking-tight text-white">
-                      {group.title}
-                    </h3>
-                    <p className="text-xs text-apple-muted">{group.subtitle}</p>
-                  </div>
+
+                  {isFeatured && (
+                    <span className="rounded-full border border-amber-400/35 bg-amber-400/10 px-3 py-1 text-xs font-semibold text-amber-300">
+                      ★ Content &amp; Brand Growth
+                    </span>
+                  )}
                 </div>
 
                 <div className="mt-6 flex flex-wrap gap-2.5">
                   {group.items.map((skill) => (
                     <span
                       key={skill}
-                      className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-medium text-zinc-200 transition-colors hover:border-apple-blue/40 hover:bg-apple-blue/10 hover:text-white"
+                      className={`rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors ${
+                        isFeatured
+                          ? "border-amber-400/20 bg-white/[0.04] text-zinc-100 hover:border-amber-400/50 hover:bg-amber-400/10 hover:text-amber-200"
+                          : "border-white/10 bg-white/[0.04] text-zinc-200 hover:border-apple-blue/40 hover:bg-apple-blue/10 hover:text-white"
+                      }`}
                     >
                       {skill}
                     </span>

@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Code2, Bot, ShoppingBag, Rocket } from "lucide-react";
+import { Code2, Bot, ShoppingBag, Rocket, Sparkles } from "lucide-react";
 import { SKILLS_BENTO } from "../../data/portfolioData";
 
 const ICONS = {
   fullstack: Code2,
   "ai-automation": Bot,
   ecommerce: ShoppingBag,
+  "content-management": Sparkles,
   "rapid-mvp": Rocket,
 };
 
@@ -14,6 +15,7 @@ function BentoCard({ skill, index }) {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
 
+  const isContentCard = skill.id === "content-management";
   const Icon = ICONS[skill.id] || Code2;
 
   const handleMouseMove = (e) => {
@@ -25,11 +27,15 @@ function BentoCard({ skill, index }) {
   };
 
   const spanClass =
-    skill.size === "large"
-      ? "md:col-span-7"
-      : skill.size === "wide"
+    skill.id === "rapid-mvp"
+      ? "md:col-span-12"
+      : skill.size === "large" || isContentCard
       ? "md:col-span-7"
       : "md:col-span-5";
+
+  const spotlightColor = isContentCard
+    ? "rgba(251, 191, 36, 0.16)"
+    : "rgba(41, 151, 255, 0.14)";
 
   return (
     <motion.div
@@ -40,14 +46,18 @@ function BentoCard({ skill, index }) {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-apple-card p-7 transition-colors hover:border-white/20 md:p-9 ${spanClass}`}
+      className={`group relative overflow-hidden rounded-3xl border bg-apple-card p-7 transition-colors md:p-9 ${
+        isContentCard
+          ? "border-amber-400/35 hover:border-amber-400/60"
+          : "border-white/10 hover:border-white/20"
+      } ${spanClass}`}
     >
       {/* Cursor Spotlight Glow */}
       <div
         className="pointer-events-none absolute -inset-px transition-opacity duration-300"
         style={{
           opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(500px circle at ${mousePos.x}px ${mousePos.y}px, rgba(41, 151, 255, 0.14), transparent 70%)`,
+          background: `radial-gradient(500px circle at ${mousePos.x}px ${mousePos.y}px, ${spotlightColor}, transparent 70%)`,
         }}
       />
 
@@ -58,17 +68,35 @@ function BentoCard({ skill, index }) {
 
       <div className="relative z-10 flex h-full flex-col justify-between">
         <div>
-          <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-apple-blue transition-transform duration-300 group-hover:scale-105">
-            <Icon className="h-5 w-5" />
+          <div className="mb-5 flex items-center justify-between gap-3">
+            <div
+              className={`inline-flex h-11 w-11 items-center justify-center rounded-2xl border transition-transform duration-300 group-hover:scale-105 ${
+                isContentCard
+                  ? "border-amber-400/35 bg-amber-400/10 text-amber-300"
+                  : "border-white/10 bg-white/5 text-apple-blue"
+              }`}
+            >
+              <Icon className="h-5 w-5" />
+            </div>
+
+            {isContentCard && (
+              <span className="rounded-full border border-amber-400/35 bg-amber-400/10 px-3 py-1 text-xs font-semibold text-amber-300">
+                ★ Content &amp; Brand Growth
+              </span>
+            )}
           </div>
 
-          <p className="text-xs font-medium uppercase tracking-wider text-apple-blue">
+          <p
+            className={`text-xs font-medium uppercase tracking-wider ${
+              isContentCard ? "text-amber-300" : "text-apple-blue"
+            }`}
+          >
             {skill.subtitle}
           </p>
           <h3 className="mt-2 text-2xl font-semibold tracking-tight text-white md:text-3xl">
             {skill.title}
           </h3>
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-apple-muted md:text-base">
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-apple-muted md:text-base">
             {skill.description}
           </p>
         </div>
@@ -79,7 +107,7 @@ function BentoCard({ skill, index }) {
 
 export default function BentoSkills() {
   return (
-    <section id="skills" className="relative bg-apple-black py-24 md:py-32">
+    <section id="capabilities" className="relative bg-apple-black py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -89,10 +117,15 @@ export default function BentoSkills() {
           className="mb-14 max-w-2xl"
         >
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl">
-            Built for speed. <span className="text-apple-muted">Engineered to convert.</span>
+            Built for speed.{" "}
+            <span className="text-apple-muted">Engineered to convert.</span>
           </h2>
           <p className="mt-4 text-base text-apple-muted sm:text-lg">
-            Every layer—from pixel-accurate UI to automated backend workflows—is crafted for real business impact.
+            Every layer—from pixel-accurate UI and automated backend workflows to{" "}
+            <span className="font-medium text-amber-300">
+              high-converting content systems
+            </span>
+            —is crafted for real business impact.
           </p>
         </motion.div>
 

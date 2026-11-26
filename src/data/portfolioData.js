@@ -1,7 +1,7 @@
 export const PROFILE = {
   name: "Shaik Abdul Khader Jilani",
   brand: "Shaik Abdul Khader Jilani",
-  role: "Full-Stack Developer & AI Automation Engineer",
+  role: "Full-Stack Developer, AI Automation Engineer & Content Manager",
   tagline: "Engineering Digital Experiences. Automated for Growth.",
   subTagline: "I build high-converting web apps, e-commerce platforms, and custom AI automation systems that save hours and scale revenue.",
   email: "shaikabdulkhaderjilani0@gmail.com",
@@ -19,7 +19,7 @@ export const ABOUT_DATA = {
   ],
   highlights: [
     { label: "Core Stack", value: "React, Vite, Node.js, Python, MongoDB" },
-    { label: "Focus Areas", value: "Full-Stack Web, E-Commerce & AI Automation" },
+    { label: "Focus Areas", value: "Full-Stack Web, E-Commerce, AI Automation & Content Management" },
     { label: "Location", value: "Hyderabad, India" },
   ],
 };
@@ -48,6 +48,14 @@ export const SKILLS_BENTO = [
     description: "Complete storefronts with variant management, secure email OTP login, and real-time order tracking.",
     size: "medium",
     accent: "from-emerald-500/20 to-teal-500/5",
+  },
+  {
+    id: "content-management",
+    title: "Content Management & Brand Systems",
+    subtitle: "Visual Carousels, Hook Copywriting, DM Funnels, Canva",
+    description: "High-converting Instagram carousels, data-backed storytelling, and inbound lead-capture content systems for founders & creators.",
+    size: "medium",
+    accent: "from-amber-500/20 to-yellow-500/5",
   },
   {
     id: "rapid-mvp",
@@ -111,9 +119,34 @@ export const PROJECTS = [
     color: "#F59E0B",
     liveUrl: "#",
   },
+  {
+    id: "aqua-man-05",
+    category: "Content Management & Organic Growth",
+    title: "Aqua Man (@aqua_man_05)",
+    tagline: "Scaled a niche Instagram brand from zero to 10,000+ organic followers.",
+    description:
+      "Managed end-to-end content strategy, high-retention Reels editing, hook pacing, and community engagement—growing an active niche audience from scratch with zero paid ad spend.",
+    metrics: "10K+ Organic Followers • ₹0 Ad Spend",
+    tech: ["Content Strategy", "Reels Editing", "Retention Hooks", "Audience Growth"],
+    color: "#F59E0B",
+    liveUrl: "#",
+  },
 ];
 
 export const EXPERIENCE_DATA = [
+  {
+    id: "freelance-content-manager",
+    role: "Content Manager & Brand Strategist",
+    organization: "Freelance • Creator & D2C Brands",
+    period: "2025 - Present",
+    summary:
+      "Managing end-to-end content strategy, high-retention visual carousels, and comment-to-DM conversion funnels for personal brands and businesses.",
+    highlights: [
+      "Scaled a niche Instagram brand (@aqua_man_05) from 0 to 10,000+ organic followers with ₹0 ad spend using retention hooks, pacing, and Reels editing.",
+      "Designed data-backed visual carousels and swipe-worthy storytelling posts that turn complex market insights into high-engagement content.",
+      "Built repeatable visual brand systems and comment-to-DM lead capture funnels to convert profile views into inbound client inquiries.",
+    ],
+  },
   {
     id: "Virtusa",
     role: "KPO Analyst",
@@ -126,7 +159,6 @@ export const EXPERIENCE_DATA = [
       "Worked in structured shift environments with strict quality and compliance standards.",
     ],
   },
-  
   {
     id: "skilldzire-data-analyst-intern",
     role: "Data Analyst Intern",
