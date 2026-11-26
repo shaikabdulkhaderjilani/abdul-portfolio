@@ -1,16 +1,24 @@
-# React + Vite
+# Shaik Abdul Khader Jilani — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website built with React and Vite, showcasing Content Manager positioning, freelance work, case studies (**Aqua Man**, **LeadPulse**), skills, experience, and contact details.
 
-Currently, two official plugins are available:
+## Live Demo
+- **Live Portfolio:** [abdul-portfolio-ruby-sigma.vercel.app](https://abdul-portfolio-ruby-sigma.vercel.app/)
+- **GitHub Repository:** [abdul-portfolio](https://github.com/shaikabdulkhaderjilani/abdul-portfolio)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Highlights & Case Studies
+- **Content Manager Positioning:** Structured storytelling, copy, and project presentation focused on clarity and conversion.
+- **Aqua Man:** Featured case study highlighting end-to-end execution and measurable outcomes.
+- **LeadPulse:** Live project & case study with repository reference and preview links.
+- **Responsive Navigation & Modal:** Mobile drawer menu with smooth section scrolling and an interactive project modal with Live Preview, GitHub, and key metrics.
 
-## React Compiler
+## Tech Stack
+- **Frontend:** React, Vite, Tailwind CSS, Framer Motion
+- **Icons:** Lucide React
+- **Deployment:** Vercel
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Local Setup
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Install dependencies**
+   ```bash
+   npm install
